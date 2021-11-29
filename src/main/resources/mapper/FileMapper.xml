@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.FileMapper">
+
+    <select id="getFileList" resultType="file">
+        select * from wgcq.file;
+    </select>
+
+    <insert id="addFile" parameterType="file">
+        insert into wgcq.file(id, name, age, sex, info, bedId, userId)
+        VALUES(#{id},#{name},#{age},#{sex},#{info},#{bedId},#{userId})
+    </insert>
+
+    <update id="updateFile" parameterType="file">
+        update wgcq.file set name=#{name},age=#{age},
+                             sex=#{sex},info=#{info},bedId=#{bedId},userId=#{userId}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteFile" parameterType="int">
+        delete from wgcq.file where id = #{id}
+    </delete>
+</mapper>

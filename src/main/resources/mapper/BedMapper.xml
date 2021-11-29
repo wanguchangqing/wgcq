@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.BedMapper">
+
+    <select id="getBedList" resultType="bed">
+        select * from wgcq.bed;
+    </select>
+
+    <insert id="addBed" parameterType="bed">
+        insert into wgcq.bed(id, location, state)
+        VALUES(#{id},#{location},#{state})
+    </insert>
+
+    <update id="updateBed" parameterType="bed">
+        update wgcq.bed set location=#{location},state=#{state}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBed" parameterType="int">
+        delete from wgcq.bed where id = #{id}
+    </delete>
+</mapper>

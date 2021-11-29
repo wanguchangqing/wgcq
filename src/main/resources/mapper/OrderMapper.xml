@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.OrderMapper">
+
+
+    <select id="getOrderList" resultType="order">
+        select * from wgcq.order where userId = #{userId};
+    </select>
+
+    <select id="getOrderListByUserId" resultType="order">
+        select * from wgcq.order where userId = #{userId};
+    </select>
+
+    <insert id="addOrder" parameterType="order">
+        insert into wgcq.order(id,userId, foodId, time)
+        VALUES(#{id},#{userId},#{foodId},#{time})
+    </insert>
+
+    <update id="updateOrder" parameterType="order">
+        update wgcq.order set userId=#{userId},foodId=#{foodId},time=#{time}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteOrder" parameterType="int">
+        delete from wgcq.order where id = #{id}
+    </delete>
+</mapper>
