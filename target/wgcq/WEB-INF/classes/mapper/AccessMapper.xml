@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.AccessMapper">
+
+    <select id="getAccessList" resultType="access">
+        select * from wgcq.access;
+    </select>
+
+    <insert id="addAccess" parameterType="access">
+        insert into wgcq.access(id, detail, time, userId)
+        VALUES(#{id},#{detail},#{time},#{userId})
+    </insert>
+
+    <update id="updateAccess" parameterType="access">
+        update wgcq.access set detail=#{detail},time=#{time},userId=#{userId}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAccess" parameterType="int">
+        delete from wgcq.access where id = #{id}
+    </delete>
+</mapper>

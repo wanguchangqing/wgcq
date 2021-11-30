@@ -14,16 +14,24 @@ public class Testdao {
     public void userTest() {
         // 获取sqlsession对象
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        // 执行sql
+        // 得到mapper对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        // 获取全部用户
         List<User> userList = mapper.getUserList();
+        // 通过id获取用户
+        User userById = mapper.getUserById(2);
+        // 通过用户名获取用户
+        User userByUsername = mapper.getUserByUsername("王姐");
+
+        // 添加一个用户
         mapper.addUser(new User("王姐","123",1));
-        mapper.getUserById(2);
-        mapper.getUserByUsername("王姐");
-        mapper.deleteUser(4);
+        // 更新2号用户
         mapper.updateUser(new User(2,"陈王小","11",1));
+        // 删除4号用户
+        mapper.deleteUser(4);
 
-
+        // 提交
         sqlSession.commit();
         // 关闭
         sqlSession.close();

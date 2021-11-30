@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.UserMapper">
+
+    <!--id对应方法名字-->
+    <select id="getUserList" resultType="user">
+        select * from wgcq.user;
+    </select>
+
+    <select id="getUserById" parameterType="int" resultType="user">
+        select * from wgcq.user where id = #{id};
+    </select>
+
+    <select id="getUserByUsername" parameterType="string" resultType="user">
+        select * from wgcq.user where username = #{username};
+    </select>
+
+    <insert id="addUser" parameterType="user">
+        insert into wgcq.user(id, username, password, roleId)
+        VALUES(#{id},#{username},#{password},#{roleId})
+    </insert>
+
+    <update id="updateUser" parameterType="user">
+        update wgcq.user set username = #{username},password = #{password},roleId = #{roleId}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from wgcq.user where id = #{id}
+    </delete>
+</mapper>
+
+

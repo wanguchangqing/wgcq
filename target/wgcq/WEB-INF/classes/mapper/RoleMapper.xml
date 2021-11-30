@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.RoleMapper">
+
+    <select id="getRoleList" resultType="role">
+        select * from wgcq.role;
+    </select>
+
+    <insert id="addRole" parameterType="role">
+        insert into wgcq.role(id, roleName)
+        VALUES(#{id},#{roleName})
+    </insert>
+
+    <update id="updateRole" parameterType="role">
+        update wgcq.role set id = #{id},roleName = #{roleName}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteRole" parameterType="int">
+        delete from wgcq.role where id = #{id}
+    </delete>
+</mapper>
