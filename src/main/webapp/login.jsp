@@ -7,23 +7,30 @@
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login.css">
     </head>
 
+    <%
+        // session.setAttribute("msg","");
+    %>
+
+
     <body>
         <div class="content">
             <div class="form sign-in">
                 <h2>欢迎回来</h2>
-                <label>
-                    <span>邮箱</span>
-                    <input type="email" />
-                </label>
-                <label>
-                    <span>密码</span>
-                    <input type="password" />
-                </label>
-                <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
-                <a href="index.jsp">
-                <button type="button" class="submit">登 录</button>
-                </a>
-<%--                <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号登录</button>--%>
+                <form action="${pageContext.request.contextPath}/login" method="post">
+                    <label>
+                        <span>账号</span>
+                        <input type="username" name="username"/>
+                    </label>
+                    <label>
+                        <span>密码</span>
+                        <input type="password" name="password"/>
+                    </label>
+                    <label>
+                        <span style="color:darkred;">${msg}</span>
+                    </label>
+                    <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
+                    <button type="submit" class="submit">登 录</button>
+                </form>
             </div>
             <div class="sub-cont">
                 <div class="img">
@@ -42,29 +49,26 @@
                 </div>
                 <div class="form sign-up">
                     <h2>立即注册</h2>
-                    <label>
-                        <span>用户名</span>
-                        <input type="text" />
-                    </label>
-                    <label>
-                        <span>邮箱</span>
-                        <input type="email" />
-                    </label>
-                    <label>
-                        <span>密码</span>
-                        <input type="password" />
-                    </label>
-                        <button type="button" class="submit">注 册</button>
-<%--                    <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号注册</button>--%>
+                    <form action="${pageContext.request.contextPath}/register" method="post">
+                        <label>
+                            <span>账号</span>
+                            <input type="username" name="username"/>
+                        </label>
+                        <label>
+                            <span>密码</span>
+                            <input type="password" name="password"/>
+                        </label>
+                        <label>
+                            <span style="color:darkred;">${msg}</span>
+                        </label>
+                        <button type="submit" class="submit">注 册</button>
+                    </form>
                 </div>
             </div>
         </div>
 
         <script src="${pageContext.request.contextPath}/static/js/login.js"></script>
 
-<%--        <div style="text-align:center;">--%>
-<%--            <p>更多模板：<a href="http://www.cssmoban.com/" target="_blank">模板之家</a></p>--%>
-<%--        </div>--%>
     </body>
 
 </html>
