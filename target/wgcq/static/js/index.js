@@ -7,7 +7,11 @@
     }
 
     Xadmin.prototype.init = function() {
+
         var tab_list = this.get_data();
+
+        console.log(tab_list)
+
         for(var i in tab_list){
             this.add_lay_tab(tab_list[i].title,tab_list[i].url,i);
         }
@@ -44,7 +48,6 @@
         this.add_lay_tab(title,url,id);
         this.set_data(title,url,id);
         element.tabChange('xbs_tab', id);
-
     }
 
     Xadmin.prototype.del_tab = function (id) {
@@ -204,7 +207,7 @@ layui.use(['layer','element','jquery'],function() {
     element = layui.element;
     $ = layui.jquery;
 
-
+    // console.log(layui.data('tab_list'))
     // 打开页面初始
     xadmin.init();
 
@@ -230,8 +233,6 @@ layui.use(['layer','element','jquery'],function() {
         if($(this).parent().parent().parent().parent().parent().attr('id')=='nav'){
             xadmin.set_cate_data({key:'f3',value:$('.left-nav #nav li').index($(this))})
         }
-
-
 
         if($('.left-nav').css('width')=='60px'){
             $('.left-nav').animate({width: '220px'}, 100);
