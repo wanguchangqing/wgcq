@@ -160,7 +160,10 @@ body{
     left: 0;
     z-index: 2;
     padding-top: 10px;
-    background-color: #d4af7a;
+    /*background-color: #bb9c68;*/
+
+    background: linear-gradient(to bottom, #bb9c68, #807862); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     width: 220px;
     max-width: 220px;
     overflow: auto;
