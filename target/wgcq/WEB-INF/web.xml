@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
           http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
+         version="4.0" metadata-complete="false">
 
   <!--字符编码过滤器-->
   <filter>
@@ -16,18 +16,19 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!--<filter>-->
-  <!--  <filter-name>LoginFilter</filter-name>-->
-  <!--  <filter-class>com.hhhhhx.filter.LoginFilter</filter-class>-->
-  <!--</filter>-->
 
-  <!--<filter-mapping>-->
-  <!--  <filter-name>LoginFilter</filter-name>-->
-  <!--  <url-pattern>/s2/*</url-pattern>-->
-  <!--</filter-mapping>-->
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.wgcq.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
 </web-app>

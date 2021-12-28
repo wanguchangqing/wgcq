@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.OldmanFilePlusMapper">
+
+    <select id="getFileList" resultMap="oldmanFilePlus">
+        select f.id fid, f.name fname, f.age fage, f.sex fsex,
+               f.info finfo, f.userId fuserId, b.location blocation, u.username uusesrname
+        from wgcq.file f
+        left join wgcq.bed b on f.userId = b.userId
+        inner join wgcq.user u on f.userId = u.id
+        where roleId = 2
+    </select>
+
+    <select id="getFileById" parameterType="int" resultMap="oldmanFilePlus">
+        select f.id fid, f.name fname, f.age fage, f.sex fsex,
+               f.info finfo, f.userId fuserId, b.location blocation, u.username uusesrname
+        from wgcq.file f
+                 left join wgcq.bed b on f.userId = b.userId
+                 inner join wgcq.user u on f.userId = u.id
+        where f.id = #{id} and roleId = 2
+    </select>
+
+    <select id="getFileByUserId" parameterType="int" resultMap="oldmanFilePlus">
+        select f.id fid, f.name fname, f.age fage, f.sex fsex,
+               f.info finfo, f.userId fuserId, b.location blocation, u.username uusesrname
+        from wgcq.file f
+                 left join wgcq.bed b on f.userId = b.userId
+                 inner join wgcq.user u on f.userId = u.id
+        where u.id = #{userId} and roleId = 2
+    </select>
+
+    <resultMap id="oldmanFilePlus" type="oldmanFilePlus">
+        <result column="fid" property="id"/>
+        <result column="fname" property="name"/>
+        <result column="fage" property="age"/>
+        <result column="fsex" property="sex"/>
+        <result column="finfo" property="info"/>
+        <result column="fuserId" property="userId"/>
+        <association property="bed" javaType="bed">
+            <result column="blocation" property="location"/>
+        </association>
+        <association property="user" javaType="user">
+            <result column="uusesrname" property="username"/>
+        </association>
+    </resultMap>
+
+
+</mapper>

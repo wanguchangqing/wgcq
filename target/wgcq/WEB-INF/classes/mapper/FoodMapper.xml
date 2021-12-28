@@ -10,13 +10,17 @@
         select * from wgcq.food;
     </select>
 
+    <select id="getFoodById" parameterType="int" resultType="food">
+        select * from wgcq.food where id=#{id};
+    </select>
+
     <insert id="addFood" parameterType="food">
-        insert into wgcq.food(id, name, value)
-        VALUES(#{id},#{name},#{value})
+        insert into wgcq.food(id, name, value,info)
+        VALUES(#{id},#{name},#{value},#{info})
     </insert>
 
     <update id="updateFood" parameterType="food">
-        update wgcq.food set name=#{name},value=#{value}
+        update wgcq.food set name=#{name},value=#{value},info=#{info}
         where id = #{id}
     </update>
 

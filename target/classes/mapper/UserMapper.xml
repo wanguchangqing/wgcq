@@ -32,6 +32,21 @@
     <delete id="deleteUser" parameterType="int">
         delete from wgcq.user where id = #{id}
     </delete>
+
+    <select id="getNoFileOldmanUserList" resultType="user">
+        select u.id,u.username from wgcq.user u left join wgcq.file f on u.id = f.userId
+        where u.roleId = 2 and f.id is null
+    </select>
+
+    <select id="getNoFileWokerUserList" resultType="user">
+        select u.id,u.username from wgcq.user u left join wgcq.file f on u.id = f.userId
+        where u.roleId = 3 and f.id is null
+    </select>
+
+    <select id="getNoBedOldmanUserList" resultType="user">
+        select u.id,u.username from wgcq.user u left join wgcq.bed b on u.id = b.userId
+        where u.roleId = 2 and b.id is null
+    </select>
 </mapper>
 
 

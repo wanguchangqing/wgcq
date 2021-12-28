@@ -11,21 +11,29 @@
         select * from wgcq.order where userId = #{userId};
     </select>
 
+    <select id="getOrderById" resultType="order">
+        select * from wgcq.order where id = #{id};
+    </select>
+
     <select id="getOrderListByUserId" resultType="order">
         select * from wgcq.order where userId = #{userId};
     </select>
 
     <insert id="addOrder" parameterType="order">
-        insert into wgcq.order(id,userId, foodId, time)
-        VALUES(#{id},#{userId},#{foodId},#{time})
+        insert into wgcq.order(id,userId, foodId, time,state)
+        VALUES(#{id},#{userId},#{foodId},#{time},#{state})
     </insert>
 
     <update id="updateOrder" parameterType="order">
-        update wgcq.order set userId=#{userId},foodId=#{foodId},time=#{time}
+        update wgcq.order set userId=#{userId},foodId=#{foodId},time=#{time},state=#{state}
         where id = #{id}
     </update>
 
     <delete id="deleteOrder" parameterType="int">
         delete from wgcq.order where id = #{id}
     </delete>
+
+
+
+
 </mapper>

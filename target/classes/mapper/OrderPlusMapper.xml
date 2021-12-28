@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.wgcq.dao.OrderPlusMapper">
+
+    <select id="getOrderList" resultMap="orderPlus">
+        select o.id oid,o.userId ouserId,o.foodId ofoodId,o.time otime,o.state ostate,
+               u.username uusername, f.name fname
+        from wgcq.order o
+                 inner join wgcq.user u on u.id = o.userId
+                 inner join wgcq.food f on f.id = o.foodId
+    </select>
+
+    <select id="getOrderByUserId" parameterType="int" resultMap="orderPlus">
+        select o.id oid,o.userId ouserId,o.foodId ofoodId,o.time otime,o.state ostate,
+               u.username uusername, f.name fname
+        from wgcq.order o
+                 inner join wgcq.user u on u.id = o.userId
+                 inner join wgcq.food f on f.id = o.foodId
+        where u.id = #{userId}
+    </select>
+
+    <resultMap id="orderPlus" type="orderPlus">
+        <result column="oid" property="id"/>
+        <result column="ouserId" property="userId"/>
+        <result column="ofoodId" property="foodId"/>
+        <result column="otime" property="time"/>
+        <result column="ostate" property="state"/>
+        <association property="user" javaType="user">
+            <result column="uusername" property="username"/>
+        </association>
+        <association property="food" javaType="food">
+            <result column="fname" property="name"/>
+        </association>
+    </resultMap>
+
+</mapper>

@@ -6,22 +6,38 @@
 <!--绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.wgcq.dao.FileMapper">
 
-    <select id="getFileList" resultType="file">
-        select * from wgcq.file;
+    <select id="getOldmanFileList" resultType="file">
+        select * from wgcq.file f
+        inner join wgcq.user u on f.userId = u.id
+        where u.roleId = 2;
+    </select>
+
+    <select id="getWorkerFileList" resultType="file">
+        select * from wgcq.file f
+        inner join wgcq.user u on f.userId = u.id
+        where u.roleId = 3;
+    </select>
+
+    <select id="getFileById" parameterType="int" resultType="file">
+        select * from wgcq.file f where f.id = #{id}
+    </select>
+
+    <select id="getFileByUserId" parameterType="int" resultType="file">
+        select * from wgcq.file where userId = #{userId}
     </select>
 
     <insert id="addFile" parameterType="file">
-        insert into wgcq.file(id, name, age, sex, info, bedId, userId)
-        VALUES(#{id},#{name},#{age},#{sex},#{info},#{bedId},#{userId})
+        insert into wgcq.file(id, name, age, sex, info, userId)
+        VALUES(#{id},#{name},#{age},#{sex},#{info},#{userId})
     </insert>
 
     <update id="updateFile" parameterType="file">
-        update wgcq.file set name=#{name},age=#{age},
-                             sex=#{sex},info=#{info},bedId=#{bedId},userId=#{userId}
+        update wgcq.file set name=#{name},age=#{age},sex=#{sex},info=#{info}
         where id = #{id}
     </update>
 
     <delete id="deleteFile" parameterType="int">
         delete from wgcq.file where id = #{id}
     </delete>
+
 </mapper>

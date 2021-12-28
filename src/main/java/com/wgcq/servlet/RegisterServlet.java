@@ -2,6 +2,8 @@ package com.wgcq.servlet;
 
 import com.wgcq.beans.User;
 import com.wgcq.service.LoginService;
+import com.wgcq.util.MybatisUtils;
+import org.apache.ibatis.session.SqlSession;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,10 +15,14 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private LoginService loginService = new LoginService();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+
+        LoginService loginService = new LoginService(sqlSession);
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -32,6 +38,8 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("msg","注册失败");
             resp.sendRedirect(req.getContextPath()+"/login.jsp");
         }
+
+        sqlSession.close();
     }
 
     @Override

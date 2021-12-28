@@ -8,6 +8,8 @@ import java.util.List;
 public interface FoodMapper {
     List<Food> getFoodList();
 
+    Food getFoodById(int id);
+
     int addFood(Food food);
 
     int updateFood(Food food);

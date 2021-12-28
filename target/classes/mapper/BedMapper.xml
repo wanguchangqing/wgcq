@@ -10,17 +10,31 @@
         select * from wgcq.bed;
     </select>
 
+
+    <select id="getBedById" parameterType="int" resultType="bed">
+        select * from wgcq.bed where id = #{id};
+    </select>
+
+    <select id="getBedByUserId" parameterType="int" resultType="bed">
+        select * from wgcq.bed where userId = #{userId};
+    </select>
+
     <insert id="addBed" parameterType="bed">
         insert into wgcq.bed(id, location, state)
         VALUES(#{id},#{location},#{state})
     </insert>
 
     <update id="updateBed" parameterType="bed">
-        update wgcq.bed set location=#{location},state=#{state}
+        update wgcq.bed set location=#{location},state=#{state},userId=#{userId}
         where id = #{id}
     </update>
 
     <delete id="deleteBed" parameterType="int">
         delete from wgcq.bed where id = #{id}
     </delete>
+
+    <select id="getSaleBedList" resultType="bed">
+        select * from wgcq.bed where state = 2;
+    </select>
+
 </mapper>

@@ -39,5 +39,8 @@
         <mapper resource="mapper/BedMapper.xml"/>
         <mapper resource="mapper/AccessMapper.xml"/>
         <mapper resource="mapper/OrderMapper.xml"/>
+        <mapper resource="mapper/OldmanFilePlusMapper.xml"/>
+        <mapper resource="mapper/WorkerFilePlusMapper.xml"/>
+        <mapper resource="mapper/OrderPlusMapper.xml"/>
     </mappers>
 </configuration>

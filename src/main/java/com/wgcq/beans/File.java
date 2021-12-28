@@ -13,15 +13,17 @@ public class File {
     private int age;
     private int sex;
     private String info;
-    private int bedId;
     private int userId;
 
-    public File(String name, int age, int sex, String info, int bedId, int userId) {
+
+    // 添加用 无id
+    public File(String name, int age, int sex, String info, int userId) {
         this.name = name;
         this.age = age;
         this.sex = sex;
         this.info = info;
-        this.bedId = bedId;
         this.userId = userId;
     }
+
+
 }

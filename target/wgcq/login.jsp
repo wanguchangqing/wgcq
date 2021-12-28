@@ -3,12 +3,15 @@
 
     <head>
         <meta charset="utf-8">
-        <title>HTML注册登录页面模板</title>
+        <title>On My Way</title>
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/index.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     </head>
 
     <%
-        // session.setAttribute("msg","");
+        session.removeAttribute("loginUser");
     %>
 
 
@@ -68,7 +71,13 @@
         </div>
 
         <script src="${pageContext.request.contextPath}/static/js/login.js"></script>
-
     </body>
+
+    <script>
+        window.onload = function () {
+            layui.data('tab_list', null);
+            layui.data('cate', null);
+        }
+    </script>
 
 </html>

@@ -17,4 +17,11 @@ public interface UserMapper {
     int updateUser(User user);
 
     int deleteUser(int id);
+
+    // 获取没有档案的人
+    List<User> getNoFileOldmanUserList();
+
+    List<User> getNoFileWokerUserList();
+
+    List<User> getNoBedOldmanUserList();
 }

@@ -7,11 +7,18 @@ import com.wgcq.beans.Role;
 import java.util.List;
 
 public interface FileMapper {
-    List<File> getFileList();
+    List<File> getOldmanFileList();
+
+    List<File> getWorkerFileList();
+
+    File getFileById(int id);
+
+    File getFileByUserId(int userId);
 
     int addFile(File file);
 
     int updateFile(File file);
 
     int deleteFile(int id);
+
 }
