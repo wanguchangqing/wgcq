@@ -21,7 +21,7 @@
                 <h2>欢迎回来</h2>
                 <form action="${pageContext.request.contextPath}/login" method="post">
                     <label>
-                        <span>账号</span>
+                        <span>账号123</span>
                         <input type="username" name="username"/>
                     </label>
                     <label>
